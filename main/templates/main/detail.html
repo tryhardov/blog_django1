@@ -1,0 +1,44 @@
+{% extends 'main/base.html' %}
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card p-4">
+            <h1 class="mb-3">
+                {{ post.title }}
+            </h1>
+
+            <div class="mb-3 text-muted">
+                Автор:
+
+                {% if post.owner and post.owner.username %}
+                    <a href="{% url 'user_page' post.owner.username %}"
+                       class="text-dark fw-bold text-decoration-none">
+
+                        {{ post.owner.username }}
+                    </a>
+                {% else %}
+                    <span>без автора</span>
+                {% endif %}
+            </div>
+
+            {% if post.image %}
+                <img src="{{ post.image.url }}"
+                     class="img-fluid rounded mb-4">
+            {% endif %}
+
+            <div class="fs-5">
+                {{ post.content }}
+            </div>
+
+            <hr>
+            <small class="text-muted">
+                {{ post.created_at }}
+            </small>
+        </div>
+    </div>
+</div>
+{% endblock %}
