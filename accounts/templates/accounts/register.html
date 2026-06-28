@@ -1,0 +1,145 @@
+{% extends 'main/base.html' %}
+
+
+
+{% block title %}
+
+Регистрация
+
+{% endblock %}
+
+
+
+
+{% block content %}
+
+
+
+<div class="row justify-content-center">
+
+
+<div class="col-md-5">
+
+
+
+<div class="card p-4">
+
+
+
+<h2 class="text-center mb-4">
+
+Создать аккаунт
+
+</h2>
+
+
+
+
+<form method="post">
+
+
+{% csrf_token %}
+
+
+
+<div class="mb-3">
+
+
+{{ form.username.label_tag }}
+
+{{ form.username }}
+
+
+</div>
+
+
+
+<div class="mb-3">
+
+
+{{ form.password1.label_tag }}
+
+{{ form.password1 }}
+
+
+</div>
+
+
+
+
+<div class="mb-3">
+
+
+{{ form.password2.label_tag }}
+
+{{ form.password2 }}
+
+
+</div>
+
+
+
+
+
+
+{% if form.errors %}
+
+<div class="alert alert-danger">
+
+Проверьте введённые данные
+
+</div>
+
+{% endif %}
+
+
+
+
+<button class="btn btn-dark w-100 mt-3">
+
+Зарегистрироваться
+
+</button>
+
+
+
+
+</form>
+
+
+
+
+
+
+<div class="text-center mt-4">
+
+
+Уже есть аккаунт?
+
+
+<a href="{% url 'login' %}">
+
+Войти
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+{% endblock %}
